@@ -1,0 +1,33 @@
+<div class="container">
+
+	<h1>Sök livsmedel</h1>
+		<div class="input-group">
+  			<input type="text" 
+	         ng-model="search" 
+	         ng-change="change()"
+	         placeholder="Sök livsmedel" />
+		</div>
+
+
+		  <!-- Table -->
+		  <table class="table">
+		    	<thead>
+		    		<tr>
+		    			<th>Food</th>
+		    			<th>Calories</th>
+		    			<th>Protein</th>
+		    			<th>Carbs</th>
+		    			<th>Fat</th>
+		    		</tr>
+		    	</thead>
+		    	<tbody>
+		    		<tr ng-repeat="mat in food">
+		    			<td>{{mat.Livsmedelsnamn}}</td>
+		    			<td>{{mat.Energi__kcal_}}</td>
+		    			<td>{{mat.Protein__g_}}</td>
+		    			<td>{{mat.Kolhydrater__g_}}</td>
+		    			<td>{{mat.Fett__g_}}</td>
+		    		</tr>
+		    	</tbody>
+		  </table>
+	</div>

@@ -1,0 +1,33 @@
+
+
+
+
+
+			<div class="container" ng-click="toggleMenu()">
+				<h1>Calculate your BMR and Caloric Maintenance</h1>
+
+				<em>Enter your height in centimeters</em>
+					<div class="input-group">
+		  				<span class="input-group-addon" id="basic-addon1">Height</span>
+		  				<input type="number" min="1" max="200" ng-model="height" class="form-control" aria-describedby="basic-addon1" "col-lg-1">
+		  				<br/>
+					</div>
+					<br/>
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">Weight</span>
+		  				<input type="number" min="1" max="200" ng-model="weight" class="form-control" aria-describedby="basic-addon1">
+					</div>
+					<br/>
+					<!-- <div class="input-group">
+		  				<span class="input-group-addon" id="basic-addon1">Gender</span>
+		  				<input type="number" min="1" max="200" ng-model="gender" class="form-control" aria-describedby="basic-addon1">
+		  				<br/>
+					</div>
+					<br/> -->
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">Age</span>
+		  				<input type="number" min="1" max="200" ng-model="age" class="form-control" aria-describedby="basic-addon1">
+					</div>
+					<h2><span class="label label-success" ng-model="bmi">Your BMR is {{( 66 + ( 13.7 * weight ) + ( 5 * height ) - ( 6.8 * age )).toFixed(0)}} Calories a day</span></h2>
+
+			</div>

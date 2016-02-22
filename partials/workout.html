@@ -1,0 +1,115 @@
+<div class="container" ng-click="toggleMenu()">
+            <ol class="breadcrumb">
+                <!--Implementera dropdown för Week och Day-->
+                <li><a href="">Workout</a></li>
+                <li><a href="">Week</a></li>
+                <li class="active">Day</li>
+            </ol>
+		<div class="page-header">
+  				<h1>Select workout</h1>
+		</div>
+         
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Workout <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="">Action</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#/createWorkout">Create new workout</a></li>
+                </ul>
+            </div>
+            
+            <div ng-controller="workoutAccordionController">
+                <script type="text/ng-template" id="group-template.html">
+                    <div class="panel {{panelClass || 'panel-default'}}">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" style="color:#fa39c3">
+                        <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading"><span
+                            ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse" uib-collapse="!isOpen">
+                        <div class="panel-body" style="text-align: right" ng-transclude></div>
+                    </div>
+                    </div>
+                </script>
+
+                <uib-accordion close-others="oneAtATime">
+                    <uib-accordion-group heading="Exercise 1" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                        <ul>
+                            <li style="display:inline;">Set 1</li>
+                            <li style="display:inline;">/</li>
+                            <li style="display:inline;">7</li>
+                        </ul>
+                        <form class="form-inline" style="padding-bottom: 5px;">
+                            <div class="form-group">
+                                <label for="exampleInputName2">Repetitions</label>
+                                <input type="text" class="form-control" value="" id="exampleInputName2" placeholder="Repetitions">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName2">Intensity</label>
+                                <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Intensity">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName2">Weight</label>
+                                <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Weight">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-success">Next >></button>
+                            </div>
+                        </form>                       
+                    </uib-accordion-group>
+                    <uib-accordion-group heading="Exercise 2">
+                        <ul>
+                            <li style="display:inline;">Set 1</li>
+                            <li style="display:inline;">/</li>
+                            <li style="display:inline;">7</li>
+                        </ul>
+                        <form class="form-inline" style="padding-bottom: 5px;">
+                            <div class="form-group">
+                                <label for="exampleInputName2">Repetitions</label>
+                                <input type="text" class="form-control" id="exampleInputName2" placeholder="Repetitions">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName2">Intensity</label>
+                                <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Intensity">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName2">Weight</label>
+                                <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Weight">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-success">Next >></button>
+                            </div>
+                        </form>                 
+                    </uib-accordion-group>
+                    <uib-accordion-group heading="Exercise 3">
+                        <ul>
+                            <li style="display:inline;">Set 1</li>
+                            <li style="display:inline;">/</li>
+                            <li style="display:inline;">7</li>
+                        </ul>
+                        <form class="form-inline" style="padding-bottom: 5px;">
+                            <div class="form-group">
+                                <label for="exampleInputName2">Repetitions</label>
+                                <input type="text" class="form-control" id="exampleInputName2" placeholder="Repetitions">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName2">Intensity</label>
+                                <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Intensity">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName2">Weight</label>
+                                <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Weight">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-success">Next >></button>
+                            </div>
+                        </form>                 
+                    </uib-accordion-group>
+                </uib-accordion>
+            </div>
+            
+
+</div>
