@@ -1,0 +1,69 @@
+<div class="container" ng-click="toggleMenu()">
+        <div style="margin-top:200px;" class="panel panel-default">
+            <div class="panel-heading">Add muscle group</div>
+            <div class="panel-body">
+                <form class="form-inline">
+                    <div class="input-group">
+                        <label class="sr-only" for="exampleInputName2">Muscle group</label>
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Add Muscle group">
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>
+            </div>
+        </div>
+        
+        <div style="margin-top:30px;" class="panel panel-default">
+            <div class="panel-heading">Add exercise</div>
+            <div class="panel-body">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputName2">Exercise name</label>
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Exercise name">
+                    </div>
+                    <div class="form-group">
+                        <div class="dropdown">
+                        <button ng-model="selectNewExerciseMuscleGroup" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            {{exerciseMuscleGroup}}
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li ng-repeat="item in muscleGroups"><a href="" ng-click="selectNewExerciseMuscleGroup(item)">{{item.Name}}</a></li>
+                        </ul>
+                    </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>              
+            </div>
+        </div>
+        
+        <div style="margin-top:30px;" class="panel panel-default">
+            <div class="panel-heading">Existing Exercises</div>
+            <div class="panel-body">
+                <div class="table-responsive table-condensed">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Exercise name</th>
+                                <th>
+                                    <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Muscle group
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li ng-repeat="item in listOfItems"><a href="">{{item.PrimaryTargetMuscle.Name}}</a></li>
+                                    </ul>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in listOfItems">
+                                <td>{{item.Name}}</td>
+                                <td>{{item.PrimaryTargetMuscle.Name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+</div>
