@@ -18,7 +18,7 @@
                 <form class="form-inline">
                     <div class="form-group">
                         <label class="sr-only" for="exampleInputName2">Exercise name</label>
-                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Exercise name">
+                        <input ng-model="newExercise.Name" type="text" class="form-control" id="exampleInputName2" placeholder="Exercise name">
                     </div>
                     <div class="form-group">
                         <div class="dropdown">
@@ -31,7 +31,7 @@
                         </ul>
                     </div>
                     </div>
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="submit" class="btn btn-success" ng-click="PostExercise()">Save</button>
                 </form>              
             </div>
         </div>
@@ -51,15 +51,15 @@
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li ng-repeat="item in listOfItems"><a href="">{{item.PrimaryTargetMuscle.Name}}</a></li>
+                                        <li ng-repeat="item in listOfItems"><a href="">{{item.MuscleGroupName}}</a></li>
                                     </ul>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="item in listOfItems">
-                                <td>{{item.Name}}</td>
-                                <td>{{item.PrimaryTargetMuscle.Name}}</td>
+                                <td>{{item.ExerciseName}}</td>
+                                <td>{{item.MuscleGroupName}}</td>
                             </tr>
                         </tbody>
                     </table>
