@@ -5,9 +5,13 @@
                 <form class="form-inline">
                     <div class="input-group">
                         <label class="sr-only" for="exampleInputName2">Muscle group</label>
-                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Add Muscle group">
+                        <input ng-model="newMuscleGroup.Name" type="text" class="form-control" id="exampleInputName2" placeholder="Add Muscle group">
                     </div>
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="submit" class="btn btn-success" ng-click="PostMuscleGroup()">Save</button>
+                    <div id="success-alert" class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Success!</strong> The item was successfully added to the database.
+                    </div>
                 </form>
             </div>
         </div>
@@ -26,7 +30,7 @@
                             {{exerciseMuscleGroup}}
                             <span class="caret"></span>
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenu1">
                             <li ng-repeat="item in muscleGroups"><a href="" ng-click="selectNewExerciseMuscleGroup(item)">{{item.Name}}</a></li>
                         </ul>
                     </div>
@@ -39,7 +43,8 @@
         <div style="margin-top:30px;" class="panel panel-default">
             <div class="panel-heading">Existing Exercises</div>
             <div class="panel-body">
-                <div class="table-responsive table-condensed">
+                
+                <div class="table-responsive table-condensed" style="min-height: 300px;">
                     <table class="table">
                         <thead>
                             <tr>
@@ -50,16 +55,17 @@
                                         Muscle group
                                         <span class="caret"></span>
                                     </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li ng-repeat="item in listOfItems"><a href="">{{item.MuscleGroupName}}</a></li>
+                                    <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenu1">
+                                        <li ng-repeat="item in muscleGroups"><a href="">{{item.Name}}</a></li>
                                     </ul>
+                </div>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="item in listOfItems">
-                                <td>{{item.ExerciseName}}</td>
-                                <td>{{item.MuscleGroupName}}</td>
+                            <tr ng-repeat="item in exercises">
+                                <td>{{item.Name}}</td>
+                                <td>{{item.PrimaryTargetMuscle.Name}}</td>
                             </tr>
                         </tbody>
                     </table>

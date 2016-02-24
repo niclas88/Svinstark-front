@@ -1,26 +1,40 @@
 myApp.controller("adminWorkoutController", ["$scope", "$http", function($scope, $http){
     
-	$scope.LimitedResult = {};
-    // $scope.listOfItems = ["Bench", "Deadlift", "Squats", "Military Press"]
     $scope.newExercise =  {};
+    $scope.newMuscleGroup = {};
     $scope.selectedMuscleGroup = {};
+    $scope.exercises = {};
     
-    $http.get("http://localhost:58023/api/admin/getmusclegroups").success(function(data){
+    $http.get("http://localhost/Sm%C3%A5flickor/api/admin/getmusclegroups").success(function(data){
         $scope.muscleGroups = data;
     });
     
-    $http.get("http://localhost:58023/api/admin/getexercises").success(function(data){
-        $scope.listOfItems = data;
+    $http.get("http://localhost/Sm%C3%A5flickor/api/admin/getexercises").success(function(data){
+        $scope.exercises = data;
     });
     
     $scope.PostExercise = function(){
-        $http.post("http://localhost:58023/api/admin/postexercise", {
-            ExerciseId: $scope.newExercise.Id,
-            ExerciseName: $scope.newExercise.Name,
-            MuscleGroupId: $scope.selectedMuscleGroup.Id,
-            MuscleGroupName: $scope.selectedMuscleGroup.Name
+        $http.post("http://localhost/Sm%C3%A5flickor/api/admin/postexercise", {
+            Id: $scope.newExercise.Id,
+            Name: $scope.newExercise.Name,
+            PrimaryTargetMuscle: {
+                Id: $scope.selectedMuscleGroup.Id
+            } 
         }).success(function(data){
-            $scope.listOfItems = data;
+            $scope.exercises = data;
+        });
+    }
+    
+    $("#success-alert").hide();
+    $scope.PostMuscleGroup = function(){
+        $http.post("http://localhost/Sm%C3%A5flickor/api/admin/postmusclegroup", {
+            Name: $scope.newMuscleGroup.Name
+        }).success(function(data){
+           $scope.muscleGroups = data;
+           $("#success-alert").alert();
+                $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+                    $("#success-alert").hide();
+                });
         });
     }
     
