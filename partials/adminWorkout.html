@@ -8,7 +8,7 @@
                         <input ng-model="newMuscleGroup.Name" type="text" class="form-control" id="exampleInputName2" placeholder="Add Muscle group">
                     </div>
                     <button type="submit" class="btn btn-success" ng-click="PostMuscleGroup()">Save</button>
-                    <div id="success-alert" class="alert alert-success alert-dismissible" role="alert">
+                    <div id="success-muscle" class="alert alert-success alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <strong>Success!</strong> The item was successfully added to the database.
                     </div>
@@ -36,6 +36,15 @@
                     </div>
                     </div>
                     <button type="submit" class="btn btn-success" ng-click="PostExercise()">Save</button>
+                    <div id="success-exercise" class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Success!</strong> The item was successfully added to the database.
+                    </div>
+                    <div id="error-exercise" class="alert alert-danger alert-dismissible" role="alert" ng-repeat="error in exerciseModelState">
+                        <div ng-repeat="i in error"><strong>Error!</strong> {{i}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                    </div>
                 </form>              
             </div>
         </div>
@@ -66,6 +75,7 @@
                             <tr ng-repeat="item in exercises">
                                 <td>{{item.Name}}</td>
                                 <td>{{item.PrimaryTargetMuscle.Name}}</td>
+                                <td><i class="fa fa-trash-o" ng-click="DeleteExercise(item)"></i></td>
                             </tr>
                         </tbody>
                     </table>
