@@ -1,4 +1,4 @@
-var myApp = angular.module("myApp", ["ngRoute", "ngAnimate", "smoothScroll", "auth0", "angular-storage", "angular-jwt", "ui.bootstrap"])
+var myApp = angular.module("myApp", ["ngRoute", "ngAnimate", "smoothScroll", "auth0", "angular-storage", "angular-jwt", "ui.bootstrap", "isteven-multi-select"])
 	.config(function (authProvider, $routeProvider, $locationProvider){
 		$routeProvider.
 			when("/", {templateUrl:"partials/home.html",
@@ -18,8 +18,11 @@ var myApp = angular.module("myApp", ["ngRoute", "ngAnimate", "smoothScroll", "au
 						  controller: "createWorkoutController",
                           requiresLogin: true}). 
             when("/adminWorkout", {templateUrl: "partials/adminWorkout.html",
-						  controller: "adminWorkoutController",
-                          requiresLogin: true}).                                         
+						  controller: "createWorkoutController",
+                          requiresLogin: true}).
+            when("/parallax", {templateUrl: "partials/parallax.html",
+						  controller: "createWorkoutController",
+                          requiresLogin: false}).                                                       
 			when("/nutrition", {templateUrl: "partials/nutrition.html",
 						  controller: "nutritionController",
                           requiresLogin: true}).

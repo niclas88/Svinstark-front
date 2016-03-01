@@ -8,9 +8,21 @@
                         <input ng-model="newMuscleGroup.Name" type="text" class="form-control" id="exampleInputName2" placeholder="Add Muscle group">
                     </div>
                     <button type="submit" class="btn btn-success" ng-click="PostMuscleGroup()">Save</button>
-                    <div id="success-muscle" class="alert alert-success alert-dismissible" role="alert">
+                    <div class="form-group">
+                        <div class="dropdown">
+                            <button ng-model="muscleGroup" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {{muscleGroup}}
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenu1">
+                                <li ng-repeat="item in muscleGroups | orderBy: 'Name'"><a href="" ng-click="selectMuscleGroup(item)">{{item.Name}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-danger" ng-click="DeleteMuscleGroup()">Delete</button>
+                    <div ng-model="muscleGroup.alert.success" id="success-muscle" class="alert alert-success alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <strong>Success!</strong> The item was successfully added to the database.
+                        <strong>Success!</strong> {{muscleGroupAlert.success}}
                     </div>
                 </form>
             </div>
@@ -26,14 +38,25 @@
                     </div>
                     <div class="form-group">
                         <div class="dropdown">
-                        <button ng-model="selectNewExerciseMuscleGroup" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            {{exerciseMuscleGroup}}
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenu1">
-                            <li ng-repeat="item in muscleGroups"><a href="" ng-click="selectNewExerciseMuscleGroup(item)">{{item.Name}}</a></li>
-                        </ul>
+                            <button ng-model="selectNewExerciseMuscleGroup" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {{exerciseMuscleGroup}}
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenu1">
+                                <li ng-repeat="item in muscleGroups | orderBy: 'Name'"><a href="" ng-click="selectNewExerciseMuscleGroup(item)">{{item.Name}}</a></li>
+                            </ul>
+                        </div>
                     </div>
+                    <div class="form-group">
+                        <div     
+                            isteven-multi-select
+                            input-model="muscleGroups"
+                            output-model="outputSecondaryMuscleGroups"
+                            button-label="Name"
+                            item-label="Name"
+                            tick-property="ticked"
+                        >
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-success" ng-click="PostExercise()">Save</button>
                     <div id="success-exercise" class="alert alert-success alert-dismissible" role="alert">
@@ -61,22 +84,38 @@
                                 <th>
                                     <div class="dropdown">
                                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        Muscle group
+                                        {{exerciseMuscleGroupFilter}}
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenu1">
-                                        <li ng-repeat="item in muscleGroups"><a href="">{{item.Name}}</a></li>
+                                        <li ng-repeat="item in muscleGroups | orderBy: 'Name'"><a href="" ng-click="SetMuscleGroupFilter(item)">{{item.Name}}</a></li>
                                     </ul>
                 </div>
                                 </th>
+                                <th>Secondary muscle groups</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="item in exercises">
-                                <td>{{item.Name}}</td>
+                            <tr ng-repeat="item in exercises | filter: exerciseMuscleGroupFilter">
+                                <td ng-if="item.editName != true">{{item.Name}}</td>
+                                <td ng-if="item.editName == true">
+                                    <div class="input-group">
+                                         <input ng-model="item.Name" type="text" class="form-control" value="{{item.Name}}" placeholder="Edit exercise name">
+                                    </div>
+                                </td>
                                 <td>{{item.PrimaryTargetMuscle.Name}}</td>
-                                <td><i class="fa fa-trash-o" ng-click="DeleteExercise(item)"></i></td>
+                                <td><div ng-repeat="i in item.SecondaryTargetMuscles" style="display: inline-block">{{i.Name}}&nbsp</div</td>
+                                <td>
+                                    <i class="fa fa-trash-o hover adminIcon" ng-click="DeleteExercise(item)"></i>
+                                    <i class="fa fa-pencil hover adminIcon" ng-click="EditExercise(item)"></i>
+                                    <i class="fa fa-floppy-o hover adminIcon" ng-click="PutExercise(item); item.editName = false"></i>
+                                </td>
                             </tr>
+                            <div id="error-exercise" class="alert alert-danger alert-dismissible" role="alert" ng-repeat="error in exercisePutModelState">
+                                <div ng-repeat="i in error"><strong>Error!</strong> {{i}}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                            </div>
                         </tbody>
                     </table>
                 </div>

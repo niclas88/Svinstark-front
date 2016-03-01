@@ -449,3 +449,19 @@ span.the-btn {
     max-height: 200px;
     overflow-x: hidden;
 }
+
+.hover:hover {
+    cursor: pointer;
+}
+
+.adminIcon {
+    margin-right: 5px;
+}
+
+.muscleGroupTable {
+    width: auto;
+    display: inline-block;
+    border: 1px solid white;
+    max-height: 300px;
+    overflow-y: scroll;
+}

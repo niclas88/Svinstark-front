@@ -1,6 +1,52 @@
 <div class="container" ng-click="toggleMenu()">
-
 		<div class="page-header">
   				<h1>Create workout</h1>
 		</div>
+        <div class="row">
+        <div class="col-lg-2 col-xs-4">
+            <div ng-controller="createWorkoutAccordionController">
+                            <script type="text/ng-template" id="group-template.html">
+                                <div class="panel {{panelClass || 'panel-default'}}">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title" style="color:#fa39c3">
+                                    <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading"><span
+                                        ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
+                                    </h4>
+                                </div>
+                                <div class="panel-collapse collapse" uib-collapse="!isOpen">
+                                    <div class="panel-body" style="text-align: right" ng-transclude></div>
+                                </div>
+                                </div>
+                            </script>
+
+                            <uib-accordion close-others="oneAtATime">
+                                <uib-accordion-group ng-repeat="item in muscleGroups | orderBy: 'Name'" heading="{{item.Name}}" ng-click="GetExercisesByMuscleGroup(item)">
+                                    <table>
+                                        <tr ng-repeat="exercise in exercises | orderBy: 'Name'">
+                                            <td ng-click="SelectExercise(exercise)">{{exercise.Name}}</td>
+                                        </tr>
+                                    </table>                      
+                                </uib-accordion-group>
+                            </uib-accordion>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-10">
+                        <div class="row" data-ng-repeat="set in set">
+                              <div class="col-md-3 col-xs-3 col-md-offset-0" style="padding:1px;">
+                                  <input ng-model="selectedExercise.Name" type="text" class="form-control" id="exampleInputEmail3" placeholder="Exercise">
+                              </div>
+                              <div class="col-md-2 col-xs-2 col-md-offset-0" style="padding:1px;">
+                                  <input ng-model="set.Intensity" type="text" class="form-control" id="exampleInputPassword3" placeholder="Intesity">
+                              </div>
+                              <div class="col-md-2 col-xs-2 col-md-offset-0" style="padding:1px;">
+                                  <input ng-model="set.Reps" type="text" class="form-control" id="exampleInputPassword3" placeholder="Reps">
+                              </div>
+                        </div>
+                        <div class="col-md-2 col-xs-2"><i class="fa fa-plus-circle" style="color: green;" ng-click="AddNewSet()"> Add set</i></div>
+                        <div class="col-md-2 col-xs-2"><i class="fa fa-minus-circle" style="color:red;" ng-click="RemoveSet()"> Remove set</i></div>
+                        <div class="col-md-2 col-xs-2"><button class="btn btn-xs btn-success">Save</button></div>  
+                    </div>
+              </div>
+        
 </div>
