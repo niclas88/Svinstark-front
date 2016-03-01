@@ -185,3 +185,85 @@
 .dropdown-menu{
     top: 100% !important;
 }
+
+.content-main {
+    height:100vh;
+    position:relative;
+    width:100%;
+}
+
+.parallax-main{
+    perspective: 1px;
+    height:100vh;
+    overflow-y: auto;
+}
+
+.parallax-group{
+    position: relative;
+    /*height: 100vh;*/
+    transform-style: preserve-3d;
+}
+
+.parallax-image {
+    transform: translateZ(0);
+    height: 100px;
+    padding: 160px 0 0 0;
+    background-size: cover;
+}
+
+.soccer-ball-img {
+    background:url(../cubes.jpg) 50% no-repeat fixed;
+}
+
+.url-img {
+    background:url(../earth.jpg) 50% no-repeat fixed;
+}
+
+.color-img {
+    background:url(../Northern.jpg) 50% no-repeat fixed;
+}
+
+.content-base{
+    transform: translateZ(0);
+    z-index: 4;
+}
+
+.content-back{
+    transform: translateZ(-1px) scale(2);
+    z-index: 3;
+}
+
+#content2 .content-back{
+    background:url(../earth.jpg) 50% no-repeat fixed;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#group1{
+    position: relative;
+    height: 400px;
+    transform-style: preserve-3d;
+}
+#content1{
+    z-index: 5;
+}
+#group2{
+    position: relative;
+    height: 100vh;
+    transform-style: preserve-3d;
+}
+#content2{
+    z-index: 3
+}
+#content3{
+    z-index: 4
+}
+#content4{
+    height: 400px;
+}
