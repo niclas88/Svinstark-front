@@ -1,72 +1,142 @@
+<div class="slides">
+    <div class="slide" id="slide-1">
+      <div class="slide__bg"></div>
+      <div id="slide_content1" class="slide__content">
+        <div class="slide__text container">
+            <div class="page-header"><h1>Enter workout information</h1></div>
+                <div class="row" style="padding-top: 100px;">
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <label>Workout name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Enter workout name">
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 100px;">
+                    <div class="col-md-4 col-md-offset-2">
+                        <label>Amount of weeks</label>
+                        <input ng-model="selectedExercise.Name" type="text" class="form-control" id="exampleInputEmail3" placeholder="How many weeks does the workout last?">
+                    </div>
+                    <div class="col-md-2 col-md-offset-0">
+                        <label>Workouts per week</label>
+                        <input ng-model="set.Intensity" type="text" class="form-control" id="exampleInputPassword3" placeholder="How many workout sessions per week?">
+                    </div>
+                    <div class="col-md-2 col-md-offset-0">
+                        <label>Choose progression</label>
+                        <input ng-model="set.Reps" type="text" class="form-control" id="exampleInputPassword3" placeholder="Reps">
+                        <a href="#" scroll-to="content2">KLICKA</a>
+                    </div>
+                </div>
+            </div>
+      </div>
+    </div>
 
-    <div class="parallax-main">
-        <div id="group1" class="parallax-group">
-            <div id="content1" class="content content-base">
-                <div class="container">
-                    <div class="row" style="padding-top: 100px;">
-                        <div class="col-lg-4 col-lg-offset-4">
-                            <label>Workout name</label>
-                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Enter workout name">
+    <!--<div class="slide" id="slide-2" style="z-index: -1;">
+      <div class="slide__bg"></div>
+
+    </div>-->
+
+    <div class="slide" id="slide-3">
+      <div class="slide__bg"></div>
+      <div id="slide_content2" class="slide__content">
+        <div id="content2" class="slide__text container">
+          <div class="row" style="padding-top: 100px;">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="true">
+                                Dropdown
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="row" style="padding-top: 100px;">
-                        <div class="col-md-4 col-md-offset-2">
-                            <label>Amount of weeks</label>
-                            <input ng-model="selectedExercise.Name" type="text" class="form-control" id="exampleInputEmail3" placeholder="How many weeks does the workout last?">
+                    <div class="row">
+                        <div class="col-lg-2 col-xs-4">
+                            <div ng-controller="createWorkoutAccordionController">
+                                <script type="text/ng-template" id="group-template.html">
+                                    <div class="panel {{panelClass || 'panel-default'}}">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title" style="color:#fa39c3">
+                                            <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading"><span
+                                                ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
+                                            </h4>
+                                        </div>
+                                        <div class="panel-collapse collapse" uib-collapse="!isOpen">
+                                            <div class="panel-body" style="text-align: right" ng-transclude></div>
+                                        </div>
+                                    </div>
+                                </script>
+
+                                <uib-accordion close-others="oneAtATime">
+                                    <uib-accordion-group ng-repeat="item in muscleGroups | orderBy: 'Name'" heading="{{item.Name}}" ng-click="GetExercisesByMuscleGroup(item)">
+                                        <table>
+                                            <tr ng-repeat="exercise in exercises | orderBy: 'Name'">
+                                                <td ng-click="SelectExercise(exercise)">{{exercise.Name}}</td>
+                                            </tr>
+                                        </table>
+                                    </uib-accordion-group>
+                                </uib-accordion>
+                            </div>
                         </div>
-                        <div class="col-md-2 col-md-offset-0">
-                            <label>Workouts per week</label>
-                            <input ng-model="set.Intensity" type="text" class="form-control" id="exampleInputPassword3" placeholder="How many workout sessions per week?">
-                        </div>
-                        <div class="col-md-2 col-md-offset-0">
-                            <label>Choose progression</label>
-                            <input ng-model="set.Reps" type="text" class="form-control" id="exampleInputPassword3" placeholder="Reps">
-                            <a href="" scroll-to="content2">KLICKA</a>
+
+                        <div class="col-lg-10">
+                            <div class="row" data-ng-repeat="set in set">
+                                <div class="col-md-3 col-xs-3 col-md-offset-0" style="padding:1px;">
+                                    <input ng-model="selectedExercise.Name" type="text" class="form-control" id="exampleInputEmail3" placeholder="Exercise">
+                                </div>
+                                <div class="col-md-2 col-xs-2 col-md-offset-0" style="padding:1px;">
+                                    <input ng-model="set.Intensity" type="text" class="form-control" id="exampleInputPassword3" placeholder="Intesity">
+                                </div>
+                                <div class="col-md-2 col-xs-2 col-md-offset-0" style="padding:1px;">
+                                    <input ng-model="set.Reps" type="text" class="form-control" id="exampleInputPassword3" placeholder="Reps">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 col-xs-2 col-md-offset-0"><i class="fa fa-plus-circle" style="color: green;" ng-click="AddNewSet()"> Add set</i></div>
+                                <div class="col-md-2 col-xs-2 col-md-offset-0"><i class="fa fa-minus-circle" style="color:red;" ng-click="RemoveSet()"> Remove set</i></div>
+                                <div class="col-md-2 col-xs-2 col-md-offset-0">
+                                    <button class="btn btn-xs btn-success">Save</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <a class="arrow-wrap" scroll-to="content2" easing="'easeInOutCubic'" href="">
-                    <span class="arrow"></span>
-                </a>
-            </div>
         </div>
-        <div class="parallax-image color-img"></div>
-        <div id="group2" class="parallax-group">
-            <div id="content2" class="content content-base">
-                <div class="container">
-                    <div class="row" style="padding-top: 100px;">
-                        <div class="col-lg-4 col-lg-offset-4">
-                            <label>Workout name</label>
-                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Enter workout name">
-                        </div>
-                    </div>
-                    <div class="row" style="padding-top: 100px;">
-                        <div class="col-md-4 col-md-offset-2">
-                            <label>Amount of weeks</label>
-                            <input ng-model="selectedExercise.Name" type="text" class="form-control" id="exampleInputEmail3" placeholder="How many weeks does the workout last?">
-                        </div>
-                        <div class="col-md-2 col-md-offset-0">
-                            <label>Workouts per week</label>
-                            <input ng-model="set.Intensity" type="text" class="form-control" id="exampleInputPassword3" placeholder="How many workout sessions per week?">
-                        </div>
-                        <div class="col-md-2 col-md-offset-0">
-                            <label>Choose progression</label>
-                            <input ng-model="set.Reps" type="text" class="form-control" id="exampleInputPassword3" placeholder="Reps">
-                            <a href="" scroll-to="content2">KLICKA</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="content content-back">
-                Content 2 Background
-            </div>
+      </div>
+    </div>
+
+    <div class="slide" id="slide-4">
+      <div class="slide__bg"></div>
+      <div class="slide__content">
+        <div class="slide__text">
+          <h1 id="slide-4-title">Parallax</h1>
         </div>
-        <!--<div class="parallax-image soccer-ball-img"></div>-->
-        <div id="content3" class="content">
-            Content 3
+      </div>
+    </div>
+
+    <div class="slide" id="slide-5">
+      <div class="slide__bg"></div>
+      <div class="slide__content">
+        <div class="slide__text">
+          <h1 id="slide-5-title">Parallax</h1>
         </div>
-        <div class="parallax-image url-img"></div>
-        <div id="content4" class="content">
-            Content 4
+        <div class="slide__image">
+          <svg viewBox="0 0 400 425" width="400" height="425"><use xlink:href="#polaroid"/></svg>
         </div>
+      </div>
+    </div>
+
+    <div class="slide" id="slide-6">
+      <div class="slide__bg"></div>
+      <div class="slide__content">
+        <div class="slide__text">
+          <h1 id="slide-6-title">Parallax</h1>
+        </div>
+        <div class="slide__image">
+          <svg viewBox="0 0 400 425" width="400" height="425"><use xlink:href="#polaroid"/></svg>
+        </div>
+      </div>
     </div>
