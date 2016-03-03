@@ -60,75 +60,8 @@
 <body>
 
 <div id="container" ng-controller="menuController">
+    <ng-view></ng-view>
 
-        <div id="canvas">
-        
-            <div id="nav">
-                         <ul id="toggle">
-						        <li>
-						            <div class="active border">
-						                <span class="menu-icons fa fa-home"></span>   <a href="#/" ng-click="HideNav()">HOME</a>
-						            </div>
-						        </li>
-						        <li ng-click="displayUl()">
-						        	<div>
-						                <span class="menu-icons  fa fa-calculator"></span>
-						                <a href="">Calculate</a>
-						                <span id="calculate-btn" class="the-btn fa fa-plus"></span>
-						            </div>
-						        	<ul ng-if="UlIsShowing == true" class="slideInUl">
-						                <li id="toggleLi">
-											<div>
-								                    <a href="#/bmi" ng-click="HideNav()">BMI</a>
-								                	<span class="menu-icons  fa fa-user"></span>
-											</div>
-						                </li>
-						                <li>
-						            	<div>
-						            		<a href="#/bmr" ng-click="HideNav()">
-						                		<span class="menu-icons  fa fa-refresh fa-heartbeat"></span>
-						                    	BMR
-						             		</a>
-						            	</div>
-						        	</li>
-						            </ul>
-						        </li>
-
-						        <li>
-						            <div>
-						            	<a href="#/workout" ng-click="HideNav()">
-						                	<span class="menu-icons  fa fa-heartbeat"></span>
-						                    Workout
-						             	</a>
-						            </div>
-						        </li>
-						        <li>
-						            <div>
-										<a href="#/nutrition" ng-click="HideNav()">
-						                	<span class="menu-icons  fa fa-book"></span>
-						                      Nutrition
-										</a>
-						            </div>
-						        </li>
-                                <li>
-                                    <div ng-controller="loginController">
-                                        <a ng-if="!auth.isAuthenticated" href="" ng-click="login(); HideNav()">
-						                	<span class="menu-icons"></span>
-						                      Sign in
-										</a>
-                                        <a ng-if="auth.isAuthenticated" href="" ng-click="logout(); HideNav()">
-						                	<span class="menu-icons"></span>
-						                      Sign out
-										</a>
-                                    </div>
-                                </li>
-    					</ul>
-             </div>
-            <div id="canvasContainer">
-            <a href="" ng-click="toggleNavigation()" class="toggle-nav" id="bars"><i class="fa fa-bars"></i></a>
-            	<ng-view></ng-view>
-            </div>
-       </div>
     </div>
 	
 

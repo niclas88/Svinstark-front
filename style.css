@@ -1,5 +1,6 @@
-
-
+html{
+    overflow: hidden;
+}
 html,
 body{
 background: darkgray;
@@ -17,7 +18,7 @@ h1{
     font-family: 'Raleway', Arial, sans-serif;
     font-weight: 700;
     font-size: 45px;
-    margin-top: 100px;
+    /*margin-top: 100px;*/
     color: steelblue;
 }
  
@@ -295,7 +296,7 @@ span.the-btn {
 }
 
 .push-down-page-content{
-    margin-top: 150px;
+    /*margin-top: 150px;*/
 }
 
 .arrow-wrap {
@@ -464,4 +465,9 @@ span.the-btn {
     border: 1px solid white;
     max-height: 300px;
     overflow-y: scroll;
+}
+
+.exerciseAccordion{
+    max-height: 500px;
+    overflow-y: auto;
 }

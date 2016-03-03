@@ -18,7 +18,7 @@ var myApp = angular.module("myApp", ["ngRoute", "ngAnimate", "smoothScroll", "au
 						  controller: "createWorkoutController",
                           requiresLogin: true}). 
             when("/adminWorkout", {templateUrl: "partials/adminWorkout.html",
-						  controller: "createWorkoutController",
+						  controller: "adminWorkoutController",
                           requiresLogin: true}).
             when("/parallax", {templateUrl: "partials/parallax.html",
 						  controller: "createWorkoutController",

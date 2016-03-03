@@ -1,5 +1,5 @@
 myApp.controller("adminWorkoutController", ["$scope", "$http", function($scope, $http){
-    
+
     $scope.newExercise =  {};
     $scope.editExercise = {};
     $scope.newMuscleGroup = {};

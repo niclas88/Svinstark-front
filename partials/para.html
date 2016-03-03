@@ -38,7 +38,7 @@
       <div class="slide__bg"></div>
       <div id="slide_content2" class="slide__content">
         <div id="content2" class="slide__text container">
-          <div class="row" style="padding-top: 100px;">
+          <!--<div class="row" style="padding-top: 100px;">-->
                         <div class="dropdown">
                             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="true">
@@ -53,10 +53,10 @@
                                 <li><a href="#">Separated link</a></li>
                             </ul>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-2 col-xs-4">
-                            <div ng-controller="createWorkoutAccordionController">
+                    <!--</div>-->
+                    <div class="row" style="padding-top: 300px;">
+                        <div class="col-lg-3 col-xs-3">
+                            <div class="exerciseAccordion" ng-controller="createWorkoutAccordionController">
                                 <script type="text/ng-template" id="group-template.html">
                                     <div class="panel {{panelClass || 'panel-default'}}">
                                         <div class="panel-heading">
@@ -83,7 +83,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-10">
+                        <div class="col-lg-9 col-xs-9 exerciseAccordion">
                             <div class="row" data-ng-repeat="set in set">
                                 <div class="col-md-3 col-xs-3 col-md-offset-0" style="padding:1px;">
                                     <input ng-model="selectedExercise.Name" type="text" class="form-control" id="exampleInputEmail3" placeholder="Exercise">
