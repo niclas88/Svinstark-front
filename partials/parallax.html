@@ -58,29 +58,20 @@
         <div class="row" style="padding-top: 50px;">
             <div class="col-lg-3 col-xs-3">
                 <div class="exerciseAccordion" ng-controller="createWorkoutAccordionController">
-                    <script type="text/ng-template" id="group-template.html">
-                        <div class="panel {{panelClass || 'panel-default'}}">
-                            <div class="panel-heading">
-                                <h4 class="panel-title" style="color:#fa39c3">
-                                            <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading"><span
-                                                ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
-                                            </h4>
-                            </div>
-                            <div class="panel-collapse collapse" uib-collapse="!isOpen">
-                                <div class="panel-body" style="text-align: right" ng-transclude></div>
-                            </div>
-                        </div>
-                    </script>
-
-                    <uib-accordion close-others="oneAtATime">
-                        <uib-accordion-group ng-repeat="item in muscleGroups | orderBy: 'Name'" heading="{{item.Name}}" ng-click="GetExercisesByMuscleGroup(item)">
-                            <table>
-                                <tr ng-repeat="exercise in exercises | orderBy: 'Name'">
-                                    <td><a href="" ng-click="SelectExercise(exercise)">{{exercise.Name}}</a></td>
-                                </tr>
-                            </table>
-                        </uib-accordion-group>
-                    </uib-accordion>
+                    <table>
+                        <tbody>
+                            <tr ng-repeat="item in muscleGroups">
+                                <td>
+                                    {{item.Name}}
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox">
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
