@@ -1,3 +1,3 @@
-myApp.controller("createWorkoutController", ["$scope", function($scope){
+myApp.controller("workoutController", ["$scope", function($scope){
 	
 }]);

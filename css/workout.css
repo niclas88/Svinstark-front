@@ -1,0 +1,166 @@
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body { 
+  margin:0;
+  padding:0;
+	perspective: 1px;
+	transform-style: preserve-3d;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-family: Nunito;
+}
+
+h1 {
+   font-size: 250%
+}
+h4{
+    font-size: 18px;
+    font-family: "Radikal-Thin",sans-serif;
+    font-weight: bold;
+    font-style: bold;
+}
+
+/*p {
+  font-size: 140%;
+  line-height: 150%;
+  color: #333;
+}*/
+
+.slide {
+  position: relative;
+  padding-top: 30vh;
+  /*min-height: 200vh;*/
+  width: 100vw;
+  box-sizing: border-box;
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, .7);
+	transform-style: inherit;
+}
+
+img {
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  width: 320px;
+  height: 240px;
+  transform: translateZ(.25px) scale(.75) translateX(-94%) translateY(-100%) rotate(2deg);
+  padding: 10px;
+  border-radius: 5px;
+  background: rgba(240,230,220, .7);
+  box-shadow: 0 0 8px rgba(0, 0, 0, .7);
+}
+
+img:last-of-type {
+  transform: translateZ(.4px) scale(.6) translateX(-104%) translateY(-40%) rotate(-5deg);
+}
+
+.slide:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left:0;
+  right:0;
+}
+#workoutHomeTitle{
+    padding-top: 100px;
+    padding-bottom: 150px;
+}
+.title {
+  width: 50%;
+  padding: 5%;
+  border-radius: 5px;
+  background: rgba(240,230,220, .7);
+  box-shadow: 0 0 8px rgba(0, 0, 0, .7);
+}
+
+.slide:nth-child(2n) .title {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.slide:nth-child(2n+1) .title {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.slide, .slide:before {
+  background: 50% 50% / cover;  
+}
+
+.header {
+  text-align: center;
+  /*font-size: 175%;*/
+  color: #fff;
+  text-shadow: 0 2px 2px #000;
+}
+
+#title {
+  background-image: url("../images/dumbell.jpg");
+   background-attachment: fixed;
+   font-size: 18px;  
+}
+
+#slide1:before {
+  background-image: url("../images/row.jpg");
+  /*background-color: lightcyan;*/
+  transform: translateZ(-1px) scale(2);
+  z-index:-1;
+  height: 100vh;
+}
+#slide1{
+    padding-top: 40vh;
+}
+#slide2 {
+  background-image: url("../images/girl.jpg");
+  /*background-color: snow;*/
+  background-attachment: fixed;
+  height: 30vh;
+}
+
+#slide3:before {
+  background-image: url("../images/curl.jpg");
+  /*background-color: white;*/
+  transform: translateZ(-1px) scale(2);
+  z-index:-1;
+  height: 100vh;
+}
+
+#slide4 {
+  background: #222;
+}
+.white-container{
+    background-color: white;
+    min-height: 70vh;
+}
+
+hr{
+    border: 3px solid #eee
+}
+.content-div{
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+p{
+    font-size: 15px;
+    line-height: 1.337;
+    font-family: "Radikal-Thin",sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+.workout-row{
+    margin-left: auto;
+    margin-right: auto;
+}
+.workout-divider{
+    border: 1px solid #eee;
+    margin-top: 1px;
+    margin-bottom: 10px;
+}
+.center-text{
+    text-align: center;
+}

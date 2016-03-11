@@ -1,115 +1,130 @@
-<div class="container" ng-click="toggleMenu()">
-            <ol class="breadcrumb">
-                <!--Implementera dropdown för Week och Day-->
-                <li><a href="">Workout</a></li>
-                <li><a href="">Week</a></li>
-                <li class="active">Day</li>
-            </ol>
-		<div class="page-header">
-  				<h1>Select workout</h1>
-		</div>
-         
-            <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Workout <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="">Action</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#/createWorkout">Create new workout</a></li>
-                </ul>
-            </div>
-            
-            <div ng-controller="workoutAccordionController">
-                <script type="text/ng-template" id="group-template.html">
-                    <div class="panel {{panelClass || 'panel-default'}}">
-                    <div class="panel-heading">
-                        <h4 class="panel-title" style="color:#fa39c3">
-                        <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading"><span
-                            ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
-                        </h4>
-                    </div>
-                    <div class="panel-collapse collapse" uib-collapse="!isOpen">
-                        <div class="panel-body" style="text-align: right" ng-transclude></div>
-                    </div>
-                    </div>
-                </script>
+<div>
+    <div ng-include="'Menus/workoutMenu.html'"></div>
+    <div id="slide1" class="slide ">
+        <div class="container-fluid white-container">
+            <h2>Choose from a selection of workouts</h2>
+            <hr>
 
-                <uib-accordion close-others="oneAtATime">
-                    <uib-accordion-group heading="Exercise 1" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
-                        <ul>
-                            <li style="display:inline;">Set 1</li>
-                            <li style="display:inline;">/</li>
-                            <li style="display:inline;">7</li>
-                        </ul>
-                        <form class="form-inline" style="padding-bottom: 5px;">
-                            <div class="form-group">
-                                <label for="exampleInputName2">Repetitions</label>
-                                <input type="text" class="form-control" value="" id="exampleInputName2" placeholder="Repetitions">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputName2">Intensity</label>
-                                <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Intensity">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputName2">Weight</label>
-                                <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Weight">
-                            </div>
-                            <div class="form-group">
-                                <button type="button" class="btn btn-success">Next >></button>
-                            </div>
-                        </form>                       
-                    </uib-accordion-group>
-                    <uib-accordion-group heading="Exercise 2">
-                        <ul>
-                            <li style="display:inline;">Set 1</li>
-                            <li style="display:inline;">/</li>
-                            <li style="display:inline;">7</li>
-                        </ul>
-                        <form class="form-inline" style="padding-bottom: 5px;">
-                            <div class="form-group">
-                                <label for="exampleInputName2">Repetitions</label>
-                                <input type="text" class="form-control" id="exampleInputName2" placeholder="Repetitions">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputName2">Intensity</label>
-                                <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Intensity">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputName2">Weight</label>
-                                <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Weight">
-                            </div>
-                            <div class="form-group">
-                                <button type="button" class="btn btn-success">Next >></button>
-                            </div>
-                        </form>                 
-                    </uib-accordion-group>
-                    <uib-accordion-group heading="Exercise 3">
-                        <ul>
-                            <li style="display:inline;">Set 1</li>
-                            <li style="display:inline;">/</li>
-                            <li style="display:inline;">7</li>
-                        </ul>
-                        <form class="form-inline" style="padding-bottom: 5px;">
-                            <div class="form-group">
-                                <label for="exampleInputName2">Repetitions</label>
-                                <input type="text" class="form-control" id="exampleInputName2" placeholder="Repetitions">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputName2">Intensity</label>
-                                <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Intensity">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputName2">Weight</label>
-                                <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Weight">
-                            </div>
-                            <div class="form-group">
-                                <button type="button" class="btn btn-success">Next >></button>
-                            </div>
-                        </form>                 
-                    </uib-accordion-group>
-                </uib-accordion>
+            <div class="content-div">
+                <p>Lorem ipsum dolor sit amet, in velit iudico mandamus sit, persius dolorum in per, postulant mnesarchum cu
+                    nam. Malis movet ornatus id vim, feugait detracto est ea, eam eruditi conceptam in. Ne sit explicari
+                    interesset. Labores perpetua cum at. Id viris docendi denique vim.</p>
             </div>
-            
+            <h3 style="padding-bottom: 150px;"><a href="">Browse all workouts</a></h3>
+            <div>
+                <h3 style="padding-bottom: 50px;">Our most popular workouts</h3>
+                <div class="row col-md-8 col-md-offset-3 col-xs-12">
+                    <div class="col-md-3 col-xs-4">
+                        <h4><a href="">Sheiko beginner</a></h4>
+                        <hr class="workout-divider">
+                        <p>A 12 week workout plan with 3 workouts a week. Increasing strength in compund exercises is the focus.</p>
+                    </div>
+                    <div class="col-md-3 col-xs-4">
+                        <h4><a href="">Sheiko advanced</a></h4>
+                        <hr class="workout-divider">
+                        <p>A 12 week workout plan with 4 workouts a week. For the more experienced lifter. Increasing strength
+                            in compund exercises is the focus.</p>
+                    </div>
+                    <div class="col-md-3 col-xs-4">
+                        <h4><a href="">Push/pull/legs</a></h4>
+                        <hr class="workout-divider">
+                        <p>An ongoing workout routine with no set end date. Frequency is 2 workouts/muscle group a week. 6 workout
+                            days every week. Focus is to add hypertrophy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid white-container">
+            <hr>
+            <h2>Start your workout</h2>
+            <hr>
+            <div class="content-div">
+                <p>Lorem ipsum dolor sit amet, in velit iudico mandamus sit, persius dolorum in per, postulant mnesarchum cu
+                    nam. Malis movet ornatus id vim, feugait detracto est ea, eam eruditi conceptam in. Ne sit explicari
+                    interesset. Labores perpetua cum at. Id viris docendi denique vim.</p>
+            </div>
 
+            <div class="content-div" style="padding-bottom: 50px;">
+                <h3>Ongoing workout</h3>
+                <h4><a href="">Sheiko beginner</a></h4>
+                <p class="center-text">Last workout completed: 2016-03-10</p>
+            </div>
+            <h3><a href="#/selectWorkout">Start workout session</a></h3>
+            <!--<img src="images/barbell.jpg">-->
+        </div>
+    </div>
+
+
+
+    <div id="slide3" class="slide">
+        <div class="container-fluid white-container">
+            <h2>Create your own workout</h2>
+            <hr>
+            <div class="content-div">
+                <p>Lorem ipsum dolor sit amet, in velit iudico mandamus sit, persius dolorum in per, postulant mnesarchum cu
+                    nam. Malis movet ornatus id vim, feugait detracto est ea, eam eruditi conceptam in. Ne sit explicari
+                    interesset. Labores perpetua cum at. Id viris docendi denique vim.</p>
+            </div>
+            <div class="content-div">
+                <p>Lorem ipsum dolor sit amet, in velit iudico mandamus sit, persius dolorum in per, postulant mnesarchum cu
+                    nam. Malis movet ornatus id vim, feugait detracto est ea, eam eruditi conceptam in. Ne sit explicari
+                    interesset. Labores perpetua cum at. Id viris docendi denique vim.</p>
+            </div>
+            <h3><a href="">Create a new workout</a></h3>
+        </div>
+        <div class="container-fluid white-container">
+            <hr>
+            <h2>Edit your existing workout</h2>
+            <hr>
+            <div class="content-div">
+                <p>Lorem ipsum dolor sit amet, in velit iudico mandamus sit, persius dolorum in per, postulant mnesarchum cu
+                    nam. Malis movet ornatus id vim, feugait detracto est ea, eam eruditi conceptam in. Ne sit explicari
+                    interesset. Labores perpetua cum at. Id viris docendi denique vim.</p>
+            </div>
+            <div class="content-div">
+                <p>Lorem ipsum dolor sit amet, in velit iudico mandamus sit, persius dolorum in per, postulant mnesarchum cu
+                    nam. Malis movet ornatus id vim, feugait detracto est ea, eam eruditi conceptam in. Ne sit explicari
+                    interesset. Labores perpetua cum at. Id viris docendi denique vim.</p>
+            </div>
+            <h3><a href="#/selectWorkout">Edit a workout</a></h3>
+            <!--<img src="images/dumbell.jpg">-->
+        </div>
+    </div>
 </div>
+
+
+
+
+
+
+<!--<div ng-include="'Menus/workoutMenu.html'"></div>
+<div id="title" class="slide header">
+  <h1 id="workoutHomeTitle">This is the workout home page</h1>
+    <div class="title">
+    <h1>Information about the page</h1>
+    <p>Lorem ipsum dolor sit amet, in velit iudico mandamus sit, persius dolorum in per, postulant mnesarchum cu nam. Malis movet ornatus id vim, feugait detracto est ea, eam eruditi conceptam in. Ne sit explicari interesset. Labores perpetua cum at. Id viris docendi denique vim.</p>
+  </div>
+</div>
+
+<div id="slide1" class="slide">
+  <div class="title">
+    <h1><a href="#/parallax">Create your own workout</a></h1>
+    <p>Lorem ipsum dolor sit amet, in velit iudico mandamus sit, persius dolorum in per, postulant mnesarchum cu nam. Malis movet ornatus id vim, feugait detracto est ea, eam eruditi conceptam in. Ne sit explicari interesset. Labores perpetua cum at. Id viris docendi denique vim.</p>
+  </div>
+</div>
+
+<div id="slide2" class="slide">
+  <div class="title">
+    <h1><a href="#/selectWorkout">Start a workout session</a></h1>
+    <p>Lorem ipsum dolor sit amet, in velit iudico mandamus sit, persius dolorum in per, postulant mnesarchum cu nam. Malis movet ornatus id vim, feugait detracto est ea, eam eruditi conceptam in. Ne sit explicari interesset. Labores perpetua cum at. Id viris docendi denique vim.</p>
+  </div>
+  <img src="images/barbell.jpg">
+  <img src="images/dumbell.jpg"> 
+</div>
+
+<div id="slide3" class="slide">
+  <div class="title">
+    <h1>Edit an existing workout</h1>
+    <p>Lorem ipsum dolor sit amet, in velit iudico mandamus sit, persius dolorum in per, postulant mnesarchum cu nam. Malis movet ornatus id vim, feugait detracto est ea, eam eruditi conceptam in. Ne sit explicari interesset. Labores perpetua cum at. Id viris docendi denique vim.</p>
+  </div>
+</div>-->

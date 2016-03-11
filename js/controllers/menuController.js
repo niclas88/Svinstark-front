@@ -1,7 +1,6 @@
 myApp.controller("menuController", ["$scope", "$rootScope", "$anchorScroll", "$location", function($scope, $rootScope, $anchorScroll, $location){
 
 
-
 		// The toggleNav function itself
 		$scope.toggleNavigation = function () {
 		    if ($('#container').hasClass('display-nav')) {

@@ -1,210 +1,151 @@
+<div ng-include="'Menus/workoutMenu.html'"></div>
 <div class="workoutContainer">
-    <div id="slide1Bg" class="blur"> </div>
-    <div id="slide1" class="container createWorkoutContainer slide" style="height:70vh;">
+    <div id="slide1Bg" class="blur" ng-show="scrollDown"> </div>
+    <div ng-show="scrollDown" id="slide1" class="container createWorkoutContainer slide" style="min-height:70vh;">
         <div class="page-header">
             <h1>Enter workout information</h1></div>
-        <div class="row" style="padding-top: 100px;">
-            <div class="col-lg-4 col-lg-offset-4">
-                <label>Workout name</label>
-                <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Enter workout name">
-            </div>
-        </div>
-        <div class="row" style="padding-top: 100px;">
-            <div class="col-md-4 col-md-offset-2">
-                <label>Amount of weeks</label>
-                <input ng-model="selectedExercise.Name" type="text" class="form-control" id="exampleInputEmail3" placeholder="How many weeks does the workout last?">
-            </div>
-            <div class="col-md-2 col-md-offset-0">
-                <label>Workouts per week</label>
-                <input ng-model="set.Intensity" type="text" class="form-control" id="exampleInputPassword3" placeholder="How many workout sessions per week?">
-            </div>
-            <div class="col-md-2 col-md-offset-0">
-                <label>Choose progression</label>
-                <input ng-model="set.Reps" type="text" class="form-control" id="exampleInputPassword3" placeholder="Reps">
-            </div>
-        </div>
-        <a class="arrow-wrap-down" href="#" scroll-to="slide2" duration="3500" easing="easeInOutQuint">
-            <span class="arrow"></span>
-        </a>
-    </div>
-
-    <div id="slide2Bg" class="blur"></div>
-    <div class="container createWorkoutContainer slide" id="slide2" style="height:100vh;">
-        <a class="arrow-wrap-up" href="#" scroll-to="slide1Bg" duration="3500" easing="easeInOutQuint">
-            <span class="arrow" id="arrow-up"></span>
-        </a>
-        <div class="row" style="padding-top: 250px;">
-            <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Select week <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="">Action</a></li>
-                    <li><a href="">Another action</a></li>
-                    <li><a href="">All weeks</a></li>
-                </ul>
-            </div>
-            <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Select session in week<span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="">Action</a></li>
-                    <li><a href="">Another action</a></li>
-                    <li><a href="">All sessions</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="row" style="padding-top: 50px;">
-            <div class="col-lg-3 col-xs-3">
-                <div class="exerciseAccordion" ng-controller="createWorkoutAccordionController">
-                    <table>
-                        <tbody>
-                            <tr ng-repeat="item in muscleGroups">
-                                <td>
-                                    {{item.Name}}
-                                </td>
-                                <td>
-                                    <label>
-                                        <input type="checkbox">
-                                    </label>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="col-lg-9 col-xs-9 exerciseAccordion">
-                <div class="row" data-ng-repeat="set in set">
-                    <div class="col-md-4 col-xs-4 col-md-offset-0" style="padding:1px;">
-                        <input ng-model="selectedExercise.Name" type="text" class="form-control" id="exampleInputEmail3" placeholder="Exercise">
-                    </div>
-                    <div class="col-md-2 col-xs-2 col-md-offset-0" style="padding:1px;">
-                        <input ng-model="set.Intensity" type="text" class="form-control" id="exampleInputPassword3" placeholder="Intesity">
-                    </div>
-                    <div class="col-md-2 col-xs-2 col-md-offset-0" style="padding:1px;">
-                        <input ng-model="set.Reps" type="text" class="form-control" id="exampleInputPassword3" placeholder="Reps">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2 col-xs-2 col-md-offset-0"><i class="fa fa-plus-circle" style="color: green;" ng-click="AddNewSet()"> Add set</i></div>
-                    <div class="col-md-2 col-xs-2 col-md-offset-0"><i class="fa fa-minus-circle" style="color:red;" ng-click="RemoveSet()"> Remove set</i></div>
-                    <div class="col-md-2 col-xs-2 col-md-offset-0">
-                        <button class="btn btn-xs btn-success">Save exercise</button>
+        <form name="createWorkoutForm">
+            <div class="row" style="padding-top: 50px;">
+                <div class="form-group col-lg-4 col-lg-offset-4" ng-class="{'has-error': createWorkoutForm.Name.$touched && createWorkoutForm.Name.$invalid}">
+                    <label>Workout name</label>
+                    <input ng-change="validateName()" ng-model="newWorkout.Name" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 600, 'blur': 0} }"
+                    name="Name" type="text" class="form-control" id="exampleInputEmail3" placeholder="Enter workout name"
+                    required ng-minlength="4" ng-maxlength="50" name-exists>
+                    <div ng-messages="createWorkoutForm.Name.$error" ng-show="createWorkoutForm.Name.$touched">
+                        <div ng-message="required">This field is required</div>
+                        <div ng-message="minlength">Name must exceed 4 characters</div>
+                        <div ng-message="maxlength">Name must not exceed 50 characters</div>
+                        <div ng-message="nameExists">Name already exists</div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<div id="slide3" class="slide">
-    <div class="title">
-        <h1>Slide 3</h1>
-        <p>Lorem ipsum dolor sit amet, in velit iudico mandamus sit, persius dolorum in per, postulant mnesarchum cu nam. Malis
-            movet ornatus id vim, feugait detracto est ea, eam eruditi conceptam in. Ne sit explicari interesset. Labores
-            perpetua cum at. Id viris docendi denique vim.</p>
-    </div>
-</div>
-
-
-<!--<div id="title" class="slide header">
-  <h1>Pure CSS Parallax</h1>
-</div>-->
-<!--<div class="workoutContainer">
-<div id="slide1" class="slide">
-    <div class="container-fluid createWorkoutContainer" style="height:100vh;">
-        <div class="page-header">
-            <h1>Enter workout information</h1></div>
-        <div class="row" style="padding-top: 100px;">
-            <div class="col-lg-4 col-lg-offset-4">
-                <label>Workout name</label>
-                <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Enter workout name">
+            <div class="row" style="padding-top: 50px; padding-bottom: 20px;">
+                <div class="col-md-3 col-md-offset-2 form-group" ng-class="{'has-error': createWorkoutForm.Weeks.$touched && createWorkoutForm.Weeks.$invalid}">
+                    <label>How many weeks does the workout last?</label>
+                    <input ng-model="newWorkout.Weeks" name="Weeks" type="number" class="form-control" id="exampleInputEmail3" placeholder="How many weeks does the workout last?"
+                    required ng-min="1" ng-max="50">
+                    <div ng-messages="createWorkoutForm.Weeks.$error" ng-show="createWorkoutForm.Weeks.$touched">
+                        <div ng-message="required">This field is required</div>
+                        <div ng-message="min">Value must exceed 0</div>
+                        <div ng-message="max">Value must not exceed 50</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-md-offset-0 form-group" ng-class="{'has-error': createWorkoutForm.Sessions.$touched && createWorkoutForm.Sessions.$invalid}">
+                    <label>Workouts per week</label>
+                    <input ng-model="newWorkout.Sessions" name="Sessions" type="number" class="form-control" id="exampleInputPassword3" placeholder="How many workout sessions per week?"
+                    required ng-min="1" ng-max="50">
+                    <div ng-messages="createWorkoutForm.Sessions.$error" ng-show="createWorkoutForm.Sessions.$touched">
+                        <div ng-message="required">This field is required</div>
+                        <div ng-message="min">Value must exceed 0</div>
+                        <div ng-message="max">Value must not exceed 50</div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-md-offset-0 form-group">
+                    <label>Create workout</label>
+                    <input type="submit" ng-click="CreateWorkout()" class="btn btn-success form-control" ng-disabled="createWorkoutForm.$invalid">
+                </div>
             </div>
-        </div>
-        <div class="row" style="padding-top: 100px;">
-            <div class="col-md-4 col-md-offset-2">
-                <label>Amount of weeks</label>
-                <input ng-model="selectedExercise.Name" type="text" class="form-control" id="exampleInputEmail3" placeholder="How many weeks does the workout last?">
-            </div>
-            <div class="col-md-2 col-md-offset-0">
-                <label>Workouts per week</label>
-                <input ng-model="set.Intensity" type="text" class="form-control" id="exampleInputPassword3" placeholder="How many workout sessions per week?">
-            </div>
-            <div class="col-md-2 col-md-offset-0">
-                <label>Choose progression</label>
-                <input ng-model="set.Reps" type="text" class="form-control" id="exampleInputPassword3" placeholder="Reps">
-            </div>
-        </div>
-        <a class="arrow-wrap-down" href="#" scroll-to="content2" duration="3500" easing="easeInOutQuint">
-            <span class="arrow"></span>
-        </a>
-
-    </div>
-</div>
-
-<div id="slide2" class="slide">
-<div class="container-fluid createWorkoutContainer" id="content2" style="height:100vh;">
-            <a class="arrow-wrap-up" href="#" scroll-to="slide1" duration="3500" easing="easeInOutQuint">
-                <span class="arrow" id="arrow-up"></span>
+            <a ng-click="CallScrollDown()" ng-if="createSuccess" class="arrow-wrap-down" href="#" scroll-to="slide2" duration="3500"
+            easing="easeInOutQuint">
+                <span class="arrow"></span>
             </a>
-            <div class="row" style="padding-top: 160px;">
-                <div class="col-lg-3 col-xs-3">
-                    <div class="exerciseAccordion" ng-controller="createWorkoutAccordionController">
-                        <script type="text/ng-template" id="group-template.html">
-                            <div class="panel {{panelClass || 'panel-default'}}">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title" style="color:#fa39c3">
-                                            <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading"><span
-                                                ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
-                                            </h4>
-                                </div>
-                                <div class="panel-collapse collapse" uib-collapse="!isOpen">
-                                    <div class="panel-body" style="text-align: right" ng-transclude></div>
-                                </div>
-                            </div>
-                        </script>
+            <div id="success-workout" class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Success!</strong> The item was successfully added to the database.
+            </div>
+            <div id="error-workout" class="alert alert-danger alert-dismissible" role="alert" ng-repeat="error in workoutModelState">
+                <div ng-repeat="i in error"><strong>Error!</strong> {{i}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+            </div>
+        </form>
+    </div>
 
-                        <uib-accordion close-others="oneAtATime">
-                            <uib-accordion-group ng-repeat="item in muscleGroups | orderBy: 'Name'" heading="{{item.Name}}" ng-click="GetExercisesByMuscleGroup(item)">
-                                <table>
-                                    <tr ng-repeat="exercise in exercises | orderBy: 'Name'">
-                                        <td ng-click="SelectExercise(exercise)">{{exercise.Name}}</td>
-                                    </tr>
-                                </table>
-                            </uib-accordion-group>
-                        </uib-accordion>
+    <div ng-hide="hideContainer2" ng-show="scrollDown" id="slide2Bg" class="blur"></div>
+    <div ng-hide="hideContainer2" class="container createWorkoutContainer slide" id="slide2" style="min-height:100vh;">
+        <!--<a class="arrow-wrap-up" href="#" scroll-to="slide1Bg" duration="3500" easing="easeInOutQuint">
+            <span class="arrow" id="arrow-up"></span>
+        </a>-->
+        <div class="container" style="padding-top: 100px; padding-bottom: 100px;">
+            <table class="table">
+                <tr>
+                    <th>
+                        {{workout.Name}}
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="container">
+            <div class="workoutPanel">
+                <div class="selectWorkoutWeek">
+                    <label>Week </label>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{selectedWeek.WorkoutWeekNumber}}<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="item in workout.WorkoutWeeks"><a href="" ng-click="SelectWeek(item)">{{item.WorkoutWeekNumber}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{selectedSession.WorkoutDayNumber}}<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="item in selectedWeek.WorkoutSessions"><a href="" ng-click="SelectSession(item)">{{item.WorkoutDayNumber}}</a></li>
+                        </ul>
+                    </div>
+                    <label>Session</label>
+                </div>
+                <h3 ng-if="selectedSession.Id == null">Select workout week and session to add exercise to</h3>
+                <div class="createWorkoutSearch" ng-show="selectedSession.Id != null">
+                    <div class="searchBox input-group col-lg-6">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter <span class="caret"></span></button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li ng-repeat="item in muscleGroups"><a href="" ng-click="GetExercisesByMuscleGroup(item); SetMuscleFilter(item)">{{item.Name}}</a></li>
+                            </ul>
+                        </div>
+                        <input ng-change="change('fetch')" ng-blur="HideSearchResults()" ng-focus="showSearchResults = true;" placeholder="Search for muscle group or exercise"
+                        ng-model="exerciseSearch" type="text" class="form-control">
+                        <label class="input-group-addon"><i class="fa fa-search"></i></label>
+                    </div>
+                    <div ng-if="exerciseSearch.length > 0 && showSearchResults" class="searchPopup">
+                        <table class="table table-hover table-condensed searchResultTable">
+                            <tbody>
+                                <tr ng-repeat="exercise in searchResult">
+                                    <td data-ng-mousedown="SelectExercise(exercise)">{{exercise.Name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-
-                <div class="col-lg-9 col-xs-9 exerciseAccordion">
-                    <div class="row" data-ng-repeat="set in set">
-                        <div class="col-md-4 col-xs-4 col-md-offset-0" style="padding:1px;">
-                            <input ng-model="selectedExercise.Name" type="text" class="form-control" id="exampleInputEmail3" placeholder="Exercise">
+                <h3 ng-if="selectedExercise.Id == null && selectedSession.Id != null">Search for exercise and click it to add a new set</h3>
+                <div class="row" style="padding-top: 50px;">
+                    <div class="col-lg-9 col-xs-9 col-xs-offset-3 col-lg-offset-3 exerciseAccordion" ng-if="selectedExercise.Id != null">
+                        <div class="row" data-ng-repeat="set in set">
+                            <div class="col-md-4 col-xs-4 col-md-offset-0" style="padding:1px;">
+                                <input ng-model="set.Name.Name" disabled type="text" class="form-control" id="exampleInputEmail3" placeholder="Exercise">
+                            </div>
+                            <div class="col-md-2 col-xs-2 col-md-offset-0" style="padding:1px;">
+                                <input ng-model="set.Intensity" type="number" step="0.025" min="0.4" max="1" class="form-control" id="exampleInputPassword3"
+                                placeholder="Intesity">
+                            </div>
+                            <div class="col-md-2 col-xs-2 col-md-offset-0" style="padding:1px;">
+                                <input ng-model="set.Reps" type="number" class="form-control" id="exampleInputPassword3" placeholder="Reps">
+                            </div>
                         </div>
-                        <div class="col-md-2 col-xs-2 col-md-offset-0" style="padding:1px;">
-                            <input ng-model="set.Intensity" type="text" class="form-control" id="exampleInputPassword3" placeholder="Intesity">
-                        </div>
-                        <div class="col-md-2 col-xs-2 col-md-offset-0" style="padding:1px;">
-                            <input ng-model="set.Reps" type="text" class="form-control" id="exampleInputPassword3" placeholder="Reps">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2 col-xs-2 col-md-offset-0"><i class="fa fa-plus-circle" style="color: green;" ng-click="AddNewSet()"> Add set</i></div>
-                        <div class="col-md-2 col-xs-2 col-md-offset-0"><i class="fa fa-minus-circle" style="color:red;" ng-click="RemoveSet()"> Remove set</i></div>
-                        <div class="col-md-2 col-xs-2 col-md-offset-0">
-                            <button class="btn btn-xs btn-success">Save exercise</button>
+                        <div class="row">
+                            <div class="col-md-2 col-xs-2 col-md-offset-0"><i class="fa fa-plus-circle" style="color: green;" ng-click="AddNewSet()"> Add set</i></div>
+                            <div class="col-md-2 col-xs-2 col-md-offset-0"><i class="fa fa-minus-circle" style="color:red;" ng-click="RemoveSet()"> Remove set</i></div>
+                            <div class="col-md-2 col-xs-2 col-md-offset-0">
+                                <button class="btn btn-xs btn-success" ng-click="AddExerciseToWorkout()">Add exercise to workout</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </div>
-
-<div id="slide3" class="slide">
-
-</div>
-
-<div id="slide4" class="slide header">
-
-</div>-->

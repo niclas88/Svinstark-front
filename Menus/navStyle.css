@@ -1,0 +1,31 @@
+@media only screen  and (min-width : 1224px) {
+    .navbar-inverse {
+        background-color: #2B2B2B;
+        border-color: #2B2B2B;
+    }
+    .navbar-inverse .navbar-nav > li > a {
+        color: white;
+        font-family: 'Lato';
+    }
+    .center-nav{
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+    }
+    .navbar .navbar-collapse {
+    text-align: center;
+    }
+    .navbar {
+        border: 0; 
+    }
+    ul.nav li.dropdown:hover > ul.dropdown-menu {
+        display: block;    
+    }
+ 
+}
+
+.navbar-brand{
+    font-size: 40px;
+    font-family: 'Raleway', Arial, sans-serif;
+    color: white !important;
+}

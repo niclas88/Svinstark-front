@@ -1,4 +1,4 @@
-var myApp = angular.module("myApp", ["ngRoute", "ngAnimate", "smoothScroll", "auth0", "angular-storage", "angular-jwt", "ui.bootstrap", "isteven-multi-select"])
+var myApp = angular.module("myApp", ["ngRoute", "ngAnimate", "smoothScroll", "auth0", "angular-storage", "angular-jwt", "ui.bootstrap", "isteven-multi-select", "ngMessages", "mp.deepBlur", "door3.css"])
 	.config(function (authProvider, $routeProvider, $locationProvider){
 		$routeProvider.
 			when("/", {templateUrl:"partials/home.html",
@@ -7,19 +7,23 @@ var myApp = angular.module("myApp", ["ngRoute", "ngAnimate", "smoothScroll", "au
                            controller: "loginController"}).            
 			when("/bmi", {templateUrl:"partials/bmi.html",
 						  controller: "bmiController",
-                          requiresLogin: true}).
+                          requiresLogin: false}).
 			when("/bmr", {templateUrl: "partials/bmr.html",
 						  controller: "bmrController",
-                          requiresLogin: true}).
+                          requiresLogin: false}).
             when("/workout", {templateUrl: "partials/workout.html",
 						  controller: "workoutController",
-                          requiresLogin: true}).
+                          css: "css/workout.css",
+                          requiresLogin: false}).
+            when("/selectWorkout", {templateUrl: "partials/selectWorkout.html",
+						  controller: "workoutController",
+                          requiresLogin: false}).
             when("/createWorkout", {templateUrl: "partials/createWorkout.html",
 						  controller: "createWorkoutController",
-                          requiresLogin: true}). 
+                          requiresLogin: false}). 
             when("/adminWorkout", {templateUrl: "partials/adminWorkout.html",
 						  controller: "adminWorkoutController",
-                          requiresLogin: true}).
+                          requiresLogin: false}).
             when("/parallax", {templateUrl: "partials/parallax.html",
 						  controller: "createWorkoutController",
                           requiresLogin: false}).
